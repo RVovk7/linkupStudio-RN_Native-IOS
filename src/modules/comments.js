@@ -4,14 +4,12 @@ import {url , handleErrors } from '../config';
 const GET_COMMENTS_BEGIN = 'GET_COMMENTS_BEGIN';
 const GET_COMMENTS_SUCCESS = 'GET_COMMENTS_SUCCESS';
 const COMMENTS_SEARCH = 'COMMENTS_SEARCH';
-const SEARCH_CLEAR = 'SEARCH_CLEAR';
 const GET_ERROR = 'GET_ERROR';
 
 const initialState = {
     data: [],
     error: null,
     loading: false,
-    clear: false
 };
 
 // reducer
@@ -23,24 +21,18 @@ export default function commentsReducer(state = initialState, action) {
             ...state,
             loading: true,
         };
-        case SEARCH_CLEAR:
-        return {
-            ...state,
-            clear: true
-        };
         case GET_COMMENTS_SUCCESS:
         const { data } = payload;
         return {
             ...state,
             data,
             loading: false,
-            clear: false
+    
         };
         case COMMENTS_SEARCH:
         const { search } = payload;
         return {
             ...state,
-            clear: false,
             dataFilt: state.data.filter(e => e.name.slice(0,search.length) === search),
         };
 
@@ -77,5 +69,4 @@ export function getComments() {
 };
 
 export const CommentsSearch = search => ({type: COMMENTS_SEARCH,  payload: { search }});
-export const SearchClear = () => ({type: SEARCH_CLEAR});
 

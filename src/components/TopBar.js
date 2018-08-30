@@ -10,15 +10,7 @@ export default class TopBar extends Component {
   }
 
   onValueChanged = e => {
-    const { param: { SearchClear } } = this.props;
-    console.log('update');
-   if (e){
       this.setState({searchText: e}, this.dispatchSearch);
-    } else {
-      SearchClear();
-    }
-
-
 }
 
 dispatchSearch = () => {

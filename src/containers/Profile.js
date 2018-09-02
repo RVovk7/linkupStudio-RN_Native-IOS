@@ -5,7 +5,11 @@ import ProfileView from '../components/ProfileView';
 import { connect } from 'react-redux';
  class Profile extends Component {
   static propTypes = {
-      
+    userAvatar: PropTypes.string.isRequired,
+    userEmail: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    saveProfileData: PropTypes.func.isRequired,
+
   }
 
   render() {
@@ -24,7 +28,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({ 
   userAvatar: state.profileReducer.userAvatar,
-  userEmail: state.profileReducer.userEmail ,
+  userEmail: state.profileReducer.userEmail,
   userName: state.profileReducer.userName,
 })
 

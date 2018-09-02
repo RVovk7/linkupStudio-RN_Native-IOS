@@ -1,12 +1,23 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Modal, Text, TouchableHighlight, View} from 'react-native';
 
 export default class AddCommentModal extends Component {
+ 
+  static propTypes = {
+    modalOpen: PropTypes.bool.isRequired,
+  }
+
 constructor(props){
   super(props)
   this.state = {
     modalVisible: false,
   }
+}
+
+static getDerivedStateFromProps(nextProps) {
+  console.log(nextProps);
+if (nextProps.modalOpen) return { modalVisible: true }
 }
 
   setModalVisible(visible) {
@@ -25,7 +36,7 @@ constructor(props){
           }}>
           <View style={{marginTop: 22}}>
             <View>
-              <Text>Hello World!</Text>
+              <Text>Modal </Text>
 
               <TouchableHighlight
                 onPress={() => {
@@ -36,13 +47,6 @@ constructor(props){
             </View>
           </View>
         </Modal>
-
-        <TouchableHighlight
-          onPress={() => {
-            this.setModalVisible(true);
-          }}>
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
       </View>
     );
   }

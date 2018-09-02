@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Header, Item, Input, Icon, Button, Text } from 'native-base';
+import AddCommentModal from '../components/AddCommentModal';
 
 export default class TopBar extends Component {
   constructor(props){
@@ -19,19 +20,26 @@ dispatchSearch = () => {
   CommentsSearch(searchText.toLowerCase());
 }
 
+openModal = () => {
+  const { param: { openModal } } = this.props;
+  openModal();
+}
+
   render() {
-const { onValueChanged, state: { searchText } } = this;
+const {  state: { searchText } , onValueChanged} = this;
     return (
+      <Fragment>
         <Header searchBar rounded header>
           <Item>
             <Icon name="ios-search" />
             <Input value={searchText} onChangeText={onValueChanged} placeholder="Search" />
             <Icon name="ios-people" />
           </Item>
-          <Button transparent>
+          <Button onPress={this.openModal}  transparent>
             <Text>Add Coment</Text>
           </Button>
         </Header>
+        </Fragment>
     );
   }
 }

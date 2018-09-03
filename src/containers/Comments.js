@@ -1,7 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { getComments ,CommentsSearch } from '../modules/comments';
+import { CommentsSearch } from '../modules/comments';
+import { getComments ,postComment } from '../modules/api'
 import TopBar from '../components/TopBar';
 import CommentsList from '../components/CommentsList';
 import AddCommentModal from '../components/AddCommentModal';
@@ -11,6 +12,7 @@ class Comments extends Component {
     static propTypes = {
         loading: PropTypes.bool.isRequired,
         getComments: PropTypes.func.isRequired,
+        postComment: PropTypes.func.isRequired,
         CommentsSearch: PropTypes.func.isRequired,
         commentsData:  PropTypes
         .arrayOf(PropTypes.object)
@@ -26,9 +28,13 @@ class Comments extends Component {
     }
 
     openModal = () => {
-        console.log('click')
         this.setState({
             modalOpen: true,
+        })
+    }
+    closeModal = () => {
+        this.setState({
+            modalOpen: false,
         })
     }
 
@@ -48,17 +54,14 @@ class Comments extends Component {
         }
     }
 
-
-    
-  
     render() {
-        const {commentsData, loading, navigation: { navigate }} = this.props;
+        const {commentsData, postComment, loading, navigation: { navigate }} = this.props;
         const { modalOpen } = this.state;
             if (loading) return (<Spinner />);
         return (
             <Fragment>
                 <CommentsList navigate={navigate} commentsData={commentsData}/>
-                <AddCommentModal modalOpen={modalOpen} />
+                <AddCommentModal postComment={postComment} modalOpenState={modalOpen} closeModal={this.closeModal} />
             </Fragment>
         )
     }
@@ -78,4 +81,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { getComments, CommentsSearch })(Comments);
+export default connect(mapStateToProps, { getComments, CommentsSearch, postComment })(Comments);

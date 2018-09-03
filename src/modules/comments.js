@@ -27,6 +27,14 @@ export default function commentsReducer(state = initialState, action) {
                 data,
                 loading: false
             };
+            case POST_COMMENTS_SUCCESS:
+            const {comment} = payload;
+            return {
+                data: [
+                    comment, ...state.data
+                ],
+                loading: false
+            };
         case COMMENTS_SEARCH:
             const {search} = payload;
             return {
@@ -34,15 +42,6 @@ export default function commentsReducer(state = initialState, action) {
                 dataFilt: state
                     .data
                     .filter(e => e.name.slice(0, search.length).toLowerCase() === search)
-            };
-        case POST_COMMENTS_SUCCESS:
-            const {comment} = payload;
-            return {
-                ...state,
-                data: [
-                    comment, ...state.data
-                ],
-                loading: false
             };
 
         case GET_ERROR:

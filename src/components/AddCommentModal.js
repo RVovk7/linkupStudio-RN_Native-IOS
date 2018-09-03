@@ -13,7 +13,7 @@ import {
     Text,
     Input
 } from 'native-base';
-import {Modal, View} from 'react-native';
+import {Modal, View , AlertIOS} from 'react-native';
 
 export default class AddCommentModal extends Component {
 
@@ -59,9 +59,14 @@ export default class AddCommentModal extends Component {
             commentEmail,
             commentText
         }
-        postComment(commentData);
-        clearState();
-        closeModal();
+        if (commentTitle && commentEmail && commentText ){
+          postComment(commentData);
+          clearState();
+          closeModal();
+        } else {
+          AlertIOS.alert('fill all the fields');
+        }
+       
 
     }
 

@@ -7,7 +7,7 @@ import {
     Label,
     Icon
 } from 'native-base';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, Text, AlertIOS} from 'react-native';
 import {Permissions, ImagePicker} from 'expo';
 export default class ProfileInput extends Component {
 
@@ -33,19 +33,26 @@ export default class ProfileInput extends Component {
     }
 
     dispatchProfile = () => {
-        const {  userAvatar, userEmail, userName } = this.state;
-        const {saveProfileData, navigate } = this.props.navigation.state.params;
-        saveProfileData(userName, userEmail,userAvatar );
-      this.setState({
-        userAvatar: '',
-            userEmail: '',
-            userName: ''
-      })
-      navigate('ProfileScreen')
+        const {userAvatar, userEmail, userName} = this.state;
+        const {saveProfileData, navigate} = this.props.navigation.state.params;
+        if (userAvatar && userEmail && userName) {
+            saveProfileData(userName, userEmail, userAvatar);
+            this.setState({userAvatar: '', userEmail: '', userName: ''})
+            navigate('ProfileScreen')
+        } else {
+            AlertIOS.alert('fill all the fields');
+        }
+
     }
 
     render() {
-        const { state: { userEmail, userName }, dispatchProfile } = this;
+        const {
+            state: {
+                userEmail,
+                userName
+            },
+            dispatchProfile
+        } = this;
         return (
             <Container >
                 <Content>

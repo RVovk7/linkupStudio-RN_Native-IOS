@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import {Container, Card, CardItem, Body, Text} from 'native-base';
 import {TouchableOpacity, FlatList} from 'react-native';
 

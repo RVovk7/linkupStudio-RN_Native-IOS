@@ -33,11 +33,12 @@ export default function commentsReducer(state = initialState, action) {
                 ...state,
                 dataFilt: state
                     .data
-                    .filter(e => e.name.slice(0, search.length) === search)
+                    .filter(e => e.name.slice(0, search.length).toLowerCase() === search)
             };
         case POST_COMMENTS_SUCCESS:
             const {comment} = payload;
             return {
+                ...state,
                 data: [
                     comment, ...state.data
                 ],

@@ -21,10 +21,10 @@ export default class AddCommentModal extends Component {
         modalOpenState: PropTypes.bool.isRequired,
         closeModal: PropTypes.func.isRequired,
         postComment: PropTypes.func.isRequired
-    }
+    };
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             modalVisible: false,
             commentTitle: '',
@@ -58,7 +58,7 @@ export default class AddCommentModal extends Component {
             commentTitle,
             commentEmail,
             commentText
-        }
+        };
         if (commentTitle && commentEmail && commentText ){
           postComment(commentData);
           clearState();
@@ -68,7 +68,7 @@ export default class AddCommentModal extends Component {
         }
        
 
-    }
+    };
 
     render() {
         const {
@@ -95,7 +95,7 @@ export default class AddCommentModal extends Component {
                                 </Button>
                             </Left>
                             <Body>
-                                <Title>Add Coment</Title>
+                                <Title>Add Comment</Title>
                             </Body>
                         </Header>
                         <Content>

@@ -1,14 +1,14 @@
-import React, {PureComponent} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Container, Card, CardItem, Body, Text} from 'native-base';
 import {TouchableOpacity, FlatList} from 'react-native';
 
-export default class CommentsList extends PureComponent {
+export default class CommentsList extends  Component {
     static propTypes = {
         commentsData: PropTypes
             .arrayOf(PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])))
             .isRequired
-    }
+    };
 
     render() {
         const {commentsData} = this.props;

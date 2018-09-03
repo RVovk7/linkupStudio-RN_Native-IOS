@@ -9,8 +9,8 @@ export default class ProfileView extends Component {
     userName: PropTypes.string.isRequired,
     saveProfileData: PropTypes.func.isRequired,
     navigate: PropTypes.func.isRequired,
+  };
 
-  }
     render() {
         const {userName, userEmail, userAvatar, navigate, saveProfileData} = this.props;
         return (

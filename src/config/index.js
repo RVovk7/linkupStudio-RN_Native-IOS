@@ -5,4 +5,4 @@ export const url = 'https://jsonplaceholder.typicode.com';
         throw Error(response.statusText);
     }
     return response;
-};
+}

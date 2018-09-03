@@ -12,7 +12,7 @@ import {Permissions, ImagePicker} from 'expo';
 export default class ProfileInput extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             userAvatar: '',
             userEmail: '',
@@ -37,13 +37,13 @@ export default class ProfileInput extends Component {
         const {saveProfileData, navigate} = this.props.navigation.state.params;
         if (userAvatar && userEmail && userName) {
             saveProfileData(userName, userEmail, userAvatar);
-            this.setState({userAvatar: '', userEmail: '', userName: ''})
+            this.setState({userAvatar: '', userEmail: '', userName: ''});
             navigate('ProfileScreen')
         } else {
             AlertIOS.alert('fill all the fields');
         }
 
-    }
+    };
 
     render() {
         const {

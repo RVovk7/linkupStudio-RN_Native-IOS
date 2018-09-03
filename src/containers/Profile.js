@@ -9,8 +9,7 @@ import { connect } from 'react-redux';
     userEmail: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     saveProfileData: PropTypes.func.isRequired,
-
-  }
+  };
 
   render() {
     const { saveProfileData, userAvatar, userEmail, userName, navigation: { navigate } }= this.props;
@@ -30,7 +29,7 @@ const mapStateToProps = state => ({
   userAvatar: state.profileReducer.userAvatar,
   userEmail: state.profileReducer.userEmail,
   userName: state.profileReducer.userName,
-})
+});
 
 
 export default connect(mapStateToProps, { saveProfileData })(Profile)

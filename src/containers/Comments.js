@@ -18,10 +18,10 @@ class Comments extends Component {
         .arrayOf(PropTypes.object)
         .isRequired,
 
-    }
+    };
 
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             modalOpen: false
         }
@@ -31,12 +31,12 @@ class Comments extends Component {
         this.setState({
             modalOpen: true,
         })
-    }
+    };
     closeModal = () => {
         this.setState({
             modalOpen: false,
         })
-    }
+    };
 
     componentDidMount() {
         const { props:{ getComments, CommentsSearch }, openModal } = this;
@@ -52,7 +52,7 @@ class Comments extends Component {
         return {
         header: <TopBar param={params} />
         }
-    }
+    };
 
     render() {
         const {commentsData, postComment, loading, navigation: { navigate }} = this.props;

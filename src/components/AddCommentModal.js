@@ -78,7 +78,8 @@ export default class AddCommentModal extends Component {
             state: {
                 commentTitle,
                 commentEmail,
-                commentText
+                commentText,
+                modalVisible
             }
         } = this;
         return (
@@ -86,7 +87,7 @@ export default class AddCommentModal extends Component {
                 <Modal
                     animationType="slide"
                     transparent={false}
-                    visible={this.state.modalVisible}>
+                    visible={modalVisible}>
                     <Container>
                         <Header>
                             <Left>
@@ -108,7 +109,7 @@ export default class AddCommentModal extends Component {
                                     margin: 5
                                 }}/>
                             </Item>
-                            <Item floatingLabel t>
+                            <Item floatingLabel>
                                 <Label>email</Label>
                                 <Input
                                     value={commentEmail}

@@ -1,37 +1,40 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { CommentsSearch } from '../modules/comments';
-import { getComments ,postComment } from '../modules/api'
-import TopBar from '../components/TopBar';
+import { getComments, postComment } from '../modules/api'
+import TopBar from './TopBar';
 import CommentsList from '../components/CommentsList';
 import AddCommentModal from '../components/AddCommentModal';
 import Spinner from '../components/Spinner';
 
 class Comments extends Component {
+
     static propTypes = {
         loading: PropTypes.bool.isRequired,
         getComments: PropTypes.func.isRequired,
         postComment: PropTypes.func.isRequired,
-        CommentsSearch: PropTypes.func.isRequired,
         commentsData:  PropTypes
         .arrayOf(PropTypes.object)
         .isRequired,
-
     };
 
-    constructor(props){
-        super(props);
-        this.state = {
-            modalOpen: false
-        }
-    }
+    static navigationOptions = ({ navigation }) => {
+        const { state: { params } } = navigation;
+         return {
+         header: <TopBar param={params} />
+         }
+     };
+
+    state = {
+        modalOpen: false 
+    };
 
     openModal = () => {
         this.setState({
             modalOpen: true,
         })
     };
+
     closeModal = () => {
         this.setState({
             modalOpen: false,
@@ -39,20 +42,12 @@ class Comments extends Component {
     };
 
     componentDidMount() {
-        const { props:{ getComments, CommentsSearch }, openModal } = this;
+        const { props:{ getComments,}, openModal } = this;
         getComments();
         this.props.navigation.setParams({
-            CommentsSearch,
-            openModal
+            openModal,
           });
     }
-
-    static navigationOptions = ({ navigation }) => {
-       const { state: { params } } = navigation;
-        return {
-        header: <TopBar param={params} />
-        }
-    };
 
     render() {
         const {commentsData, postComment, loading, navigation: { navigate }} = this.props;
@@ -69,7 +64,6 @@ class Comments extends Component {
 
 
 const mapStateToProps = state => {
-
     let commentsData =  state.commentsReducer.data;
     if (state.commentsReducer.dataFilt ){
         commentsData = state.commentsReducer.dataFilt
@@ -80,5 +74,4 @@ const mapStateToProps = state => {
     }
 };
 
-
-export default connect(mapStateToProps, { getComments, CommentsSearch, postComment })(Comments);
+export default connect(mapStateToProps, { getComments, postComment })(Comments);

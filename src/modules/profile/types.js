@@ -1,0 +1,5 @@
+const SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS';
+
+export default {
+    SAVE_PROFILE_SUCCESS,
+}

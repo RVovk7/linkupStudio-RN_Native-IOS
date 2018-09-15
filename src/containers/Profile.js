@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { saveProfileData } from '../modules/profile';
+import { saveProfileData } from '../modules/profile/actions';
 import ProfileView from '../components/ProfileView';
 import { connect } from 'react-redux';
  class Profile extends Component {

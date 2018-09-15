@@ -23,15 +23,13 @@ export default class AddCommentModal extends Component {
         postComment: PropTypes.func.isRequired
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             modalVisible: false,
             commentTitle: '',
             commentEmail: '',
             commentText: ''
         }
-    }
+
 
     static getDerivedStateFromProps(nextProps) {
         return {modalVisible: nextProps.modalOpenState}

@@ -6,8 +6,8 @@ import Profile from '../containers/Profile';
 import CommentView from '../components/CommentView';
 import ProfileInput from '../components/ProfileInput';
 
-const CommentsStack = createStackNavigator({CommentsListScreen: Comments, CommentViewScreen: CommentView});
-const ProfileStack = createStackNavigator({ProfileScreen: Profile, ProfileInputScreen: ProfileInput});
+const CommentsStack = createStackNavigator({ Comments, CommentView});
+const ProfileStack = createStackNavigator({ Profile, ProfileInput});
 
 const RootNavigator = createBottomTabNavigator({
     'Comments': {

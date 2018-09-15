@@ -1,18 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Container, Content, Card} from "native-base";
 import {View, TouchableOpacity, Image, Text} from "react-native";
-export default class ProfileView extends Component {
-  static propTypes = {
-    userAvatar: PropTypes.string.isRequired,
-    userEmail: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
-    saveProfileData: PropTypes.func.isRequired,
-    navigate: PropTypes.func.isRequired,
-  };
+export default function ProfileView({userName, userEmail, userAvatar, navigate, saveProfileData}){
 
-    render() {
-        const {userName, userEmail, userAvatar, navigate, saveProfileData} = this.props;
         return (
             <Container>
                 <Content padder>
@@ -68,7 +59,7 @@ export default class ProfileView extends Component {
                         </Text>
 
                         <TouchableOpacity
-                            onPress={() => navigate('ProfileInputScreen', {
+                            onPress={() => navigate('ProfileInput', {
                             saveProfileData: saveProfileData,
                             navigate: navigate
                         })}
@@ -102,5 +93,12 @@ export default class ProfileView extends Component {
                 </Content>
             </Container>
         );
-    }
 }
+
+ProfileView.propTypes = {
+    userAvatar: PropTypes.string.isRequired,
+    userEmail: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    saveProfileData: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
+  };

@@ -9,16 +9,14 @@ import {
 } from 'native-base';
 import {View, TouchableOpacity, Text, AlertIOS} from 'react-native';
 import {Permissions, ImagePicker} from 'expo';
+
 export default class ProfileInput extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+   state = {
             userAvatar: '',
             userEmail: '',
             userName: ''
-        }
-    }
+        };
 
     askPermissionsAsync = async() => {
         await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -38,7 +36,7 @@ export default class ProfileInput extends Component {
         if (userAvatar && userEmail && userName) {
             saveProfileData(userName, userEmail, userAvatar);
             this.setState({userAvatar: '', userEmail: '', userName: ''});
-            navigate('ProfileScreen')
+            navigate('Profile')
         } else {
             AlertIOS.alert('fill all the fields');
         }

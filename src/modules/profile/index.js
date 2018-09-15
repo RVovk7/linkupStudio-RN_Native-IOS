@@ -1,5 +1,4 @@
-const SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS';
-
+import types from './types';
 const initialState = {
     userName: 'Add some information about you ',
     userEmail: '',
@@ -11,7 +10,7 @@ export default function profileReducer(state = initialState, action) {
         payload
     } = action;
     switch (action.type) {
-        case SAVE_PROFILE_SUCCESS:
+        case types.SAVE_PROFILE_SUCCESS:
             const {
                 userName,
                 userEmail,
@@ -28,11 +27,3 @@ export default function profileReducer(state = initialState, action) {
     }
 };
 
-export const saveProfileData = (userName, userEmail, userAvatar) => ({
-    type: SAVE_PROFILE_SUCCESS,
-    payload: {
-        userName,
-        userEmail,
-        userAvatar
-    }
-});

@@ -3,7 +3,7 @@ import {
     getCommentsSuccess,
     postCommentsSuccess,
     getError
-} from './comments';
+} from './comments/actions';
 import {
     url,
     handleErrors

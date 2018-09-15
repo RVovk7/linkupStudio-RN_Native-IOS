@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {Container, Card, CardItem, Body, Text} from 'native-base';
 import {TouchableOpacity, FlatList} from 'react-native';
 
-export default class CommentsList extends  Component {
+export default class CommentsList extends  PureComponent {
     static propTypes = {
         commentsData: PropTypes
             .arrayOf(PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])))
@@ -28,7 +28,7 @@ export default class CommentsList extends  Component {
         const {navigate} = this.props;
         return (
             <TouchableOpacity
-                onPress={() => navigate('CommentViewScreen', {
+                onPress={() => navigate('CommentView', {
                 name: item.name,
                 body: item.body,
                 email: item.email

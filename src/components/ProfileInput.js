@@ -7,6 +7,7 @@ import {
     Label,
     Icon
 } from 'native-base';
+import styles from "../styles";
 import {View, TouchableOpacity, Text, AlertIOS} from 'react-native';
 import {Permissions, ImagePicker} from 'expo';
 
@@ -52,38 +53,17 @@ export default class ProfileInput extends Component {
             dispatchProfile
         } = this;
         return (
-            <Container >
+           <Container >
                 <Content>
                     <View
-                        style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-around',
-                        padding: 15,
-                        margin: 15
-                    }}>
+                        style={styles.profileInputView}>
                         <TouchableOpacity
                             onPress={this.imagePicker}
-                            style={{
-                            borderWidth: .5,
-                            flexDirection: 'row',
-                            borderStyle: 'solid',
-                            height: 128,
-                            width: 128,
-                            borderRadius: 64,
-                            borderColor: 'gray',
-                            justifyContent: 'center'
-                        }}>
+                            style={styles.profileImage}>
                             <View
-                                style={{
-                                flexDirection: 'column',
-                                justifyContent: 'center'
-                            }}>
+                                style={styles.profileButtonPosition}>
                                 <Icon
-                                    style={{
-                                    left: 25,
-                                    marginBottom: 10
-                                }}
+                                    style={styles.profileIcon}
                                     name='person'/>
                                 <Text>
                                     Add Avatar
@@ -93,18 +73,14 @@ export default class ProfileInput extends Component {
                     </View >
 
                     <Item
-                        style={{
-                        margin: 20
-                    }}
+                        style={styles.profileItem}
                         floatingLabel
                         last>
                         <Label>Name</Label>
                         <Input value={userName} onChangeText={(e) => this.setState({userName: e})}/>
                     </Item>
                     <Item
-                        style={{
-                        margin: 20
-                    }}
+                       style={styles.profileItem}
                         floatingLabel
                         last>
                         <Label>Email</Label>
@@ -112,36 +88,14 @@ export default class ProfileInput extends Component {
                     </Item>
 
                     <View
-                        style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-around',
-                        padding: 15,
-                        margin: 15
-                    }}>
+                        style={styles.profileInputView}>
                         <TouchableOpacity
-                            style={{
-                            top: 80,
-                            height: 64,
-                            width: 64,
-                            borderRadius: 32,
-                            borderWidth: .5,
-                            borderStyle: 'solid',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            backgroundColor: '#999999',
-                            borderColor: '#999999'
-                        }}
+                            style={styles.profileButton}
                             onPress={dispatchProfile}>
                             <View
-                                style={{
-                                flexDirection: 'column',
-                                justifyContent: 'center'
-                            }}>
+                                style={styles.profileButtonPosition}>
                                 <Text
-                                    style={{
-                                    color: "white"
-                                }}>
+                                   style={styles.profileButtonColor}>
                                     SAVE
                                 </Text>
                             </View>

@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Container, Content, Card} from "native-base";
 import {View, TouchableOpacity, Image, Text} from "react-native";
+import styles from "../styles";
+
 export default function ProfileView({userName, userEmail, userAvatar, navigate, saveProfileData}){
 
         return (
@@ -9,44 +11,22 @@ export default function ProfileView({userName, userEmail, userAvatar, navigate, 
                 <Content padder>
                     <Card
                         transparent
-                        style={{
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'space-around',
-                        padding: 15,
-                        margin: 15
-                    }}>
+                        style={styles.profileCard}>
                         <Image
-                            style={{
-                            borderWidth: .5,
-                            flexDirection: 'row',
-                            height: 128,
-                            width: 128,
-                            borderRadius: 64,
-                            borderColor: 'gray',
-                            justifyContent: 'center'
-                        }}
+                            style={styles.profileImage}
                             source={{
                             uri: userAvatar
                         }}/>
                         <Text
-                            style={{
-                            marginTop: 50,
-                            fontSize: 20
-                        }}>
+                            style={styles.profileTextPosition}>
                             {`Welcome, `}
                             <Text
-                                style={{
-                                color: 'gray'
-                            }}>
+                                style={styles.profileTextColor}>
                                 {userName}</Text>
 
                         </Text>
                         <Text
-                            style={{
-                            margin: 20,
-                            fontSize: 20
-                        }}>
+                            style={styles.profileTextPosition}>
                             {userEmail
                                 ? `Email: `
                                 : ``}
@@ -63,27 +43,11 @@ export default function ProfileView({userName, userEmail, userAvatar, navigate, 
                             saveProfileData: saveProfileData,
                             navigate: navigate
                         })}
-                            style={{
-                            top: 80,
-                            height: 64,
-                            width: 64,
-                            borderRadius: 32,
-                            borderWidth: .5,
-                            borderStyle: 'solid',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            backgroundColor: '#999999',
-                            borderColor: '#999999'
-                        }}>
+                            style={styles.profileButton}>
                             <View
-                                style={{
-                                flexDirection: 'column',
-                                justifyContent: 'center'
-                            }}>
+                                style={styles.profileButtonPosition}>
                                 <Text
-                                    style={{
-                                    color: "white"
-                                }}>
+                                    style={styles.profileButtonColor}>
                                     CHANGE
                                 </Text>
                             </View>

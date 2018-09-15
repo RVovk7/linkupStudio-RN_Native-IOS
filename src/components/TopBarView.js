@@ -20,12 +20,12 @@ export default function TopBarView({ searchText, openModal, CommentsSearch }) {
     );
 }
 
-const onValueChanged = (e,CommentsSearch) => {
+const onValueChanged = ( e, CommentsSearch ) => {
     CommentsSearch(e.toLowerCase());
 };
 
 
 TopBarView.propTypes = {
-    searchText: PropTypes.string.isRequired,
+    searchText: PropTypes.string,
     CommentsSearch: PropTypes.func.isRequired,
 }

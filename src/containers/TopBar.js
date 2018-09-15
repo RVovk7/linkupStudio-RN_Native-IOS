@@ -15,10 +15,8 @@ import TopBarView from '../components/TopBarView';
 class TopBar extends Component {
 
   static propTypes = {
-    searchText: PropTypes.string.isRequired,
+    searchText: PropTypes.string,
     CommentsSearch: PropTypes.func.isRequired,
-
-  
 };
 
     openModal = () => {

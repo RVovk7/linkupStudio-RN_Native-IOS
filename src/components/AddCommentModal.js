@@ -93,7 +93,7 @@ export default class AddCommentModal extends Component {
                             </Body>
                         </Header>
                         <Content>
-                            <Item floatingLabel t>
+                            <Item >
                                 <Label>Title</Label>
                                 <Input
                                     value={commentTitle}
@@ -102,7 +102,7 @@ export default class AddCommentModal extends Component {
                                     margin: 5
                                 }}/>
                             </Item>
-                            <Item floatingLabel>
+                            <Item>
                                 <Label>email</Label>
                                 <Input
                                     value={commentEmail}
@@ -111,7 +111,7 @@ export default class AddCommentModal extends Component {
                                     margin: 5
                                 }}/>
                             </Item>
-                            <Item floatingLabel>
+                            <Item>
                                 <Label>Comment</Label>
                                 <Input
                                     value={commentText}

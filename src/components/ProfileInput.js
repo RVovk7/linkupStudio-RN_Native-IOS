@@ -102,14 +102,14 @@ render() {
 
                     <Item
                         style={styles.profileItem}
-                        floatingLabel
+                        
                         last>
                         <Label>Name</Label>
                         <Input value={userName} onChangeText={(e) => this.setState({userName: e})}/>
                     </Item>
                     <Item
                        style={styles.profileItem}
-                        floatingLabel
+                        
                         last>
                         <Label>Email</Label>
                         <Input value={userEmail} onChangeText={(e) => this.setState({userEmail: e})}/>

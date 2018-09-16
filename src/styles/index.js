@@ -60,5 +60,29 @@ export default styles = StyleSheet.create({
     },
     profileItem:{
         margin: 20
+    },
+    selectedIcon: {
+        color: 'white',
+        left: 30,
+        marginBottom: 10,
+        opacity: 1
+    },
+    selectedImage:{
+        top: 30,
+        height: 128,
+        width: 128,
+        borderRadius: 64,
+        borderColor: 'white',
+        justifyContent: 'center',
+        bottom:25,
+        opacity: .75
+    },
+    
+    selectedButton:{
+        left: 25,
+        bottom: 55,
+    },
+    selectedButtonStyle:{
+    color: 'white',
     }
 });

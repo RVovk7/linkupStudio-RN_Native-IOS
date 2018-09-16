@@ -1,14 +1,16 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {
     Container,
     Content,
     Item,
     Input,
     Label,
-    Icon
+    Icon,
+    Root,
 } from 'native-base';
 import styles from "../styles";
-import {View, TouchableOpacity, Text, AlertIOS} from 'react-native';
+import {View, TouchableOpacity, Text,  Image } from 'react-native';
+import vaildateUtil from '../util';
 import {Permissions, ImagePicker} from 'expo';
 
 export default class ProfileInput extends Component {
@@ -16,7 +18,7 @@ export default class ProfileInput extends Component {
    state = {
             userAvatar: '',
             userEmail: '',
-            userName: ''
+            userName: '',
         };
 
     askPermissionsAsync = async() => {
@@ -32,19 +34,49 @@ export default class ProfileInput extends Component {
     }
 
     dispatchProfile = () => {
-        const {userAvatar, userEmail, userName} = this.state;
+        const {userAvatar, userEmail, userName } = this.state;
         const {saveProfileData, navigate} = this.props.navigation.state.params;
-        if (userAvatar && userEmail && userName) {
+        
+        if ( vaildateUtil(userAvatar, userEmail, userName, true) ){
             saveProfileData(userName, userEmail, userAvatar);
             this.setState({userAvatar: '', userEmail: '', userName: ''});
             navigate('Profile')
-        } else {
-            AlertIOS.alert('fill all the fields');
         }
+          
+           
 
     };
 
-    render() {
+    avatarButtonRender() {
+ const { userAvatar } = this.state;
+     if (!userAvatar) {
+        return (
+            <Fragment>
+                <Icon style={styles.profileIcon} name='person'/>
+                <Text>
+                    Add Avatar
+                </Text>
+            </Fragment>
+        )    
+     } 
+        return(
+            <Fragment>  
+                <Image
+            style={styles.selectedImage}
+            source={{
+            uri: userAvatar
+        }}/>
+         <View style={styles.selectedButton}>
+         <Icon style={styles.selectedIcon} name='person'/>
+                 <Text style={styles.selectedButtonStyle}>
+                    Add Avatar
+                </Text>
+                </View>
+         </Fragment>
+        )
+    }
+
+render() {
         const {
             state: {
                 userEmail,
@@ -53,6 +85,7 @@ export default class ProfileInput extends Component {
             dispatchProfile
         } = this;
         return (
+            <Root>
            <Container >
                 <Content>
                     <View
@@ -62,12 +95,7 @@ export default class ProfileInput extends Component {
                             style={styles.profileImage}>
                             <View
                                 style={styles.profileButtonPosition}>
-                                <Icon
-                                    style={styles.profileIcon}
-                                    name='person'/>
-                                <Text>
-                                    Add Avatar
-                                </Text>
+                                {this.avatarButtonRender()}
                             </View>
                         </TouchableOpacity>
                     </View >
@@ -104,6 +132,7 @@ export default class ProfileInput extends Component {
                     </View>
                 </Content>
             </Container>
+            </Root>
         )
     }
 }

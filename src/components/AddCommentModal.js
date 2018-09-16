@@ -11,9 +11,11 @@ import {
     Button,
     Title,
     Text,
-    Input
+    Input,
+    Root
 } from 'native-base';
-import {Modal, View , AlertIOS} from 'react-native';
+import vaildateUtil from '../util';
+import {Modal, View } from 'react-native';
 
 export default class AddCommentModal extends Component {
 
@@ -41,14 +43,8 @@ export default class AddCommentModal extends Component {
 
     sendComment = () => {
         const {
-            props: {
-                closeModal,
-                postComment
-            },
-            state: {
-                commentTitle,
-                commentEmail,
-                commentText
+            props: { closeModal, postComment },
+            state: { commentTitle, commentEmail, commentText
             },
             clearState
         } = this;
@@ -57,12 +53,10 @@ export default class AddCommentModal extends Component {
             commentEmail,
             commentText
         };
-        if (commentTitle && commentEmail && commentText ){
+        if ( vaildateUtil(commentTitle, commentEmail, commentText, false) ){
           postComment(commentData);
           clearState();
           closeModal();
-        } else {
-          AlertIOS.alert('fill all the fields');
         }
        
 
@@ -86,6 +80,7 @@ export default class AddCommentModal extends Component {
                     animationType="slide"
                     transparent={false}
                     visible={modalVisible}>
+                    <Root>
                     <Container>
                         <Header>
                             <Left>
@@ -136,8 +131,11 @@ export default class AddCommentModal extends Component {
                             </Button>
                         </Content>
                     </Container>
+                    </Root>
                 </Modal>
+          
             </View>
+           
         );
     }
 }

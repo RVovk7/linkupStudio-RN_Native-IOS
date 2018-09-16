@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { saveProfileData } from '../modules/profile/actions';
 import ProfileView from '../components/ProfileView';
@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
   render() {
     const { saveProfileData, userAvatar, userEmail, userName, navigation: { navigate } }= this.props;
     return (
+      <Fragment>
       <ProfileView
       saveProfileData={saveProfileData}
       userAvatar={userAvatar}
@@ -21,6 +22,7 @@ import { connect } from 'react-redux';
       userName={userName}
       navigate={navigate}
       />
+      </Fragment>
     )
   }
 }

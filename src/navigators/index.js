@@ -34,5 +34,7 @@ const RootNavigator = createBottomTabNavigator({
 });
 
 export default function Navigate() {
-    return ( <RootNavigator/> );
+    return (
+            <RootNavigator/>
+    )
 };
